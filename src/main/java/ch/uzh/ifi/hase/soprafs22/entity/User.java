@@ -1,9 +1,10 @@
 package ch.uzh.ifi.hase.soprafs22.entity;
 
-import ch.uzh.ifi.hase.soprafs22.constant.UserStatus;
-
+import ch.uzh.ifi.hase.soprafs22.constant.Status;
+import ch.uzh.ifi.hase.soprafs22.constant.UserType;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
 test
@@ -24,57 +25,55 @@ public class User implements Serializable {
 
   @Id
   @GeneratedValue
-  private Long id;
-
-  @Column(nullable = false)
-  private String name;
+  private Long userId;
 
   @Column(nullable = false, unique = true)
   private String username;
 
+  @Column(nullable = false)
+  private String password;
+
+  @Column(nullable = true, unique = true)
+  private UserType type;
+
+  @Column(nullable = false)
+  private   Status status;
+
   @Column(nullable = false, unique = true)
   private String token;
 
-  @Column(nullable = false)
-  private UserStatus status;
+  @Column(nullable = true)
+  private Date birthday;
 
-  public Long getId() {
-    return id;
-  }
+  public Long getUserId() {return userId; }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+  public void setUserId(Long userId) { this.userId = userId; }
 
-  public String getName() {
-    return name;
-  }
+  public String getUsername() {return username; }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+  public void setUsername(String username) {this.username = username;}
 
-  public String getUsername() {
-    return username;
-  }
+  public String getPassword() {return password; }
+  public void setPassword(String password) {this.password = password;}
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  public String getToken() {return token;}
 
-  public String getToken() {
-    return token;
-  }
+  public void setToken(String token) {this.token = token;}
 
-  public void setToken(String token) {
-    this.token = token;
-  }
+  public UserType getUserType() {return type;}
 
-  public UserStatus getStatus() {
-    return status;
-  }
+  public void setUserType(UserType type) {this.type = type;}
 
-  public void setStatus(UserStatus status) {
-    this.status = status;
-  }
+  public Status getStatus() {return status;}
+
+  public void setStatus(Status status) {this.status = status;}
+
+  public UserType getType() { return type; }
+
+  public void setType(UserType type) { this.type = type; }
+
+  public Date getBirthday() { return birthday; }
+
+  public void setBirthday(Date birthday) { this.birthday = birthday; }
+
 }

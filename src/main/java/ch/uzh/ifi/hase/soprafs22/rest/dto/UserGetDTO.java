@@ -2,42 +2,35 @@ package ch.uzh.ifi.hase.soprafs22.rest.dto;
 
 import ch.uzh.ifi.hase.soprafs22.constant.UserStatus;
 
+import java.util.Date;
+
 public class UserGetDTO {
-
-  private Long id;
-  private String name;
+  private Long userId;
   private String username;
-  private UserStatus status;
+  private Date creation_date;
+  private boolean logged_in;
+  private Date birthday;
 
-  public Long getId() {
-    return id;
-  }
+  public Long getUserId() {return userId;}
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+  public void setUserId(Long userId) {this.userId = userId;}
 
-  public String getName() {
-    return name;
-  }
+  public String getUsername() {return username;}
 
-  public void setName(String name) {
-    this.name = name;
-  }
+  public void setUsername(String username) {this.username = username;}
 
-  public String getUsername() {
-    return username;
-  }
+  public void setCreation_date(Date creation_date) {this.creation_date = creation_date;}
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+  public boolean getLogged_in() {return logged_in;}
 
-  public UserStatus getStatus() {
-    return status;
-  }
+  public void setLogged_in(boolean logged_in) {this.logged_in = logged_in;}
 
-  public void setStatus(UserStatus status) {
-    this.status = status;
-  }
+  public Date getBirthday() {return birthday;}
+
+  public void setBirthday(Date birthday) {this.birthday = birthday;}
+
+  public boolean isLogged_in() {
+        return logged_in;
+    }
+
 }
