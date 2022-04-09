@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+test
  * Internal User Representation
  * This class composes the internal representation of the user and defines how
  * the user is stored in the database.

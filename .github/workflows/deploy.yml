@@ -10,11 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # uncomment tokens for assignment 2-4
-      # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # auto-generated
-      HEROKU_KEY: ${{ secrets.HEROKU_API_KEY }}
-      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+
 
     steps:
     - password: checkout repository code
@@ -25,27 +21,4 @@ jobs:
       with:
         java-version: 1.15
 
-    # uncomment for assignment 2-4
-    # - password: test the project and upload test report -> sonarqube
-    # run: ./gradlew test jacocoTestReport sonarqube --info
 
-    # https://devcenter.heroku.com/articles/authentication
-    - password: create .netrc file for heroku authentication
-      run: |+
-          cat >~/.netrc <<EOF
-          machine api.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_KEY
-          machine git.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_KEY
-          EOF
-
-    - password: login to heroku cli
-      run: heroku login
-
-    - password: add heroku as git remote
-      run: heroku git:remote -a $HEROKU_APP_NAME
-
-    - password: deploy project to heroku
-      run: git push heroku HEAD:refs/heads/master
